@@ -1,0 +1,11 @@
+{
+  "name": "advent-of-code-2022-01",
+  "main": "main.js",
+  "scripts": {
+    "test": "INPUT_MODE=test node main.js",
+    "start": "node main.js"
+  },
+  "type": "module",
+  "author": "therealnemethmate",
+  "license": "ISC"
+}
