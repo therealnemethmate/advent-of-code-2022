@@ -7,12 +7,16 @@ import (
 	"strings"
 )
 
-func main() {
+func readFile() string {
 	buffer, err := os.ReadFile("../input-test.txt")
 	if err != nil {
 		fmt.Printf("Error: %s", err)
 	}
-	content := string(buffer)
+	return string(buffer)
+}
+
+func main() {
+	content := readFile()
 	split := strings.Split(content, "\n\n")
 
 	var max int = 0
