@@ -8,7 +8,7 @@ import (
 )
 
 func readFile() string {
-	buffer, err := os.ReadFile("../input-test.txt")
+	var buffer, err = os.ReadFile("../input.txt")
 	if err != nil {
 		fmt.Printf("Error: %s", err)
 	}
@@ -16,13 +16,13 @@ func readFile() string {
 }
 
 func main() {
-	content := readFile()
-	split := strings.Split(content, "\n\n")
+	var content string = readFile()
+	var split []string = strings.Split(content, "\n\n")
 
 	var max int = 0
 	for _, v := range split {
 		sum := 0
-		line := strings.Split(v, "\n")
+		var line []string = strings.Split(v, "\n")
 		for _, amount := range line {
 			converted, _ := strconv.Atoi(amount)
 			sum += converted
