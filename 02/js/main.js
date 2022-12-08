@@ -1,6 +1,6 @@
-import { readInputFile } from "../../utils/js";
+import { readInputFile } from "../../utils/js/index.js";
 
-const input = readInputFile(process.env.INPUT_MODE, '02');
+const input = await readInputFile(process.env.INPUT_MODE, '02');
 const scoreMap = {
     'A X': 4, 'A Y': 8, 'A Z': 3,
     'B X': 1, 'B Y': 5, 'B Z': 9,
