@@ -10,7 +10,7 @@ function getPriority(value, i) {
     return /[a-z]/.test(value) ? value.charCodeAt(i) - 96 : value.charCodeAt(i) - 38
 }
 
-const score = input.split('\n').reduce((aggr, curr) => {
+const scorePartOne = input.split('\n').reduce((aggr, curr) => {
     const firstHalfSet = new Set(curr.slice(0, getMiddle(curr)).split(''));
     const secondHalf = curr.slice(getMiddle(curr), curr.length).split('');
     const commonItems = new Set(Array.from(secondHalf.filter((item) => firstHalfSet.has(item))));
@@ -18,4 +18,11 @@ const score = input.split('\n').reduce((aggr, curr) => {
     return aggr + Math.max(...[...commonItems].map((item, i) => getPriority(item, i)));
 }, 0);
 
-console.log(score);
+let scorePartTwo = 0;
+for (const iterator of input.match(/(?=[\s\S])(?:.*\n?){1,3}/g)) {
+    const lines = iterator.split('\n');
+    const commonLetter = lines[0].split('').find(char => lines.filter(c => c).every((otherLine) => otherLine.indexOf(char) >= 0));
+    scorePartTwo += getPriority(commonLetter);
+}
+
+console.log('Result: ', { scorePartOne, scorePartTwo });
