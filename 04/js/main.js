@@ -17,4 +17,15 @@ const resultPartOne = input.split('\n').reduce((aggr, line) => {
         : aggr;
 }, 0);
 
-console.log('Result', { resultPartOne });
+const resultPartTwo = input.split('\n').reduce((aggr, line) => {
+    if (!line.length) return aggr;
+    const sequencePairs = line.split(',')
+        .map((pair) => pair.split('-').map(Number))
+        .map((pair) => range(pair[0], pair[1], 1));
+    const setSize = new Set(sequencePairs.flat()).size;
+    return (sequencePairs[0].length + sequencePairs[1].length) - setSize
+        ? aggr + 1
+        : aggr;
+}, 0);
+
+console.log('Result', { resultPartOne, resultPartTwo });
